@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Redirect
 } from "react-router-dom";
 import { routes } from "./routes";
 
@@ -30,6 +30,8 @@ export const App = () => {
                     {routes.map((route, i) => (
                         <RouteWithSubRoutes key={i} {...route} />
                     ))}
+                    <Redirect to="/" />
+
                 </Switch>
             </>
         </Router>
