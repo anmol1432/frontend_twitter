@@ -18,6 +18,7 @@ function RouteWithSubRoutes(route) {
                 // pass the sub-routes down to keep nesting
                 <route.component {...props} routes={route.routes} />
             )}
+            exact
         />
     );
 }
@@ -30,9 +31,8 @@ export const App = () => {
                     {routes.map((route, i) => (
                         <RouteWithSubRoutes key={i} {...route} />
                     ))}
-                    <Redirect to="/" />
-
                 </Switch>
+                <Redirect to="/error" />
             </>
         </Router>
     );
