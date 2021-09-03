@@ -1,6 +1,8 @@
 import Home from "./pages/Home/index";
+import UserPage from "./pages/Home/AfterAuthentication/index";
 import Error from "./pages/404/index";
 import Login from "./pages/Login/index";
+
 
 
 export const routes = [
@@ -16,4 +18,8 @@ export const routes = [
         path: "/",
         component: Home
     },
+    {
+        path: "/home",
+        component: UserPage
+    }
 ];

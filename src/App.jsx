@@ -6,38 +6,27 @@ import {
     Redirect
 } from "react-router-dom";
 import { routes } from "./routes";
+import Home from "./pages/Home/index";
+import UserPage from "./pages/Home/AfterAuthentication/index";
+import Error from "./pages/404/index";
+import Login from "./pages/Login/index";
 
-// A special wrapper for <Route> that knows how to
-// handle "sub"-routes by passing them in a `routes`
-// prop to the component it renders.
-function RouteWithSubRoutes(route) {
-    return (
-        <Route
-            path={route.path}
-            render={props => (
-                // pass the sub-routes down to keep nesting
-                <route.component {...props} routes={route.routes} />
-            )}
-            exact
-        />
-    );
-}
 
 export const App = () => {
     return (
         <Router>
             <>
                 <Switch>
-                    {routes.map((route, i) => (
-                        <RouteWithSubRoutes key={i} {...route} />
-                    ))}
+                    <Route exact path={"/"} render={() => <Home />} />
+                    <Route exact path={"/home"} render={() => <UserPage />} />
+                    <Route exact path={"/login"} render={() => <Login />} />
+                    <Route exact path={"/error"} render={() => <Error />} />
+                    <Redirect to="/error" />
                 </Switch>
-                <Redirect to="/error" />
             </>
         </Router>
     );
 }
-
 
 
 
