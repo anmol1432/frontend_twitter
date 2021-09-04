@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { DownloadOutlined } from '@ant-design/icons';
 import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/index";
 import "./index.css"
@@ -8,8 +7,6 @@ import "./index.css"
 const Login = () => {
     const handleSubmit = e => {
         e.preventDefault();
-    }; const onFinish = (values) => {
-        console.log('Received values of form: ', values);
     };
     useEffect(() => {
         console.log();
