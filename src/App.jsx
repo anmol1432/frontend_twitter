@@ -5,9 +5,8 @@ import {
     Route,
     Redirect
 } from "react-router-dom";
-import { routes } from "./routes";
 import Home from "./pages/Home/index";
-import UserPage from "./pages/Home/AfterAuthentication/index";
+import UserPage from "./pages/UserPage/index";
 import Error from "./pages/404/index";
 import Login from "./pages/Login/index";
 

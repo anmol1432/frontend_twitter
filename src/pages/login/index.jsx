@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { DownloadOutlined } from '@ant-design/icons';
 import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/index";
 import "./index.css"
@@ -8,8 +7,6 @@ import "./index.css"
 const Login = () => {
     const handleSubmit = e => {
         e.preventDefault();
-    }; const onFinish = (values) => {
-        console.log('Received values of form: ', values);
     };
     useEffect(() => {
         console.log();
@@ -41,7 +38,7 @@ const Login = () => {
                         <form onSubmit={handleSubmit} className="flex flex-col" >
                             <Input name="username" type="text" className="mb-2">Phone,email,username</Input>
                             <Input name="username" type="text" className="mb-2">Password</Input>
-                            <button type="primary" shape="round" size="large" className="bg-blue-500 rounded-full font-medium text-white py-3 my-3">
+                            <button type="primary" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
                                 Log in
                             </button>
                         </form>
