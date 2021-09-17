@@ -1,0 +1,61 @@
+#sidebar{
+    height: 100vh;
+}
+
+#sidebarList{
+    height: 70vh    ;
+}
+
+#listItem:hover{
+    background-color: rgba(125, 208, 243, 0.979);
+    opacity: 0.2;
+}
+
+@media (max-width:500px) {
+ #sidebarList {
+    flex-direction: row;
+    width: 100vw;
+    position: fixed;
+    z-index: 4;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-top: 1px solid gray;
+    height: 7vh;
+    background-color: #000000;
+    padding-left: 40px;
+    padding-top: 10px;
+}
+    #list-text{
+    visibility: hidden;
+    width: 0px;
+    }
+    #icons-hide{   
+        display:none;
+    }
+}
+
+@media (max-width:770px) {
+    #sidebarList {
+    flex-direction: row;
+    width: 100vw;
+    position: fixed;
+    z-index: 4;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 7vh;
+    background-color: #000000;
+    padding-left: 40px;
+    padding-top: 10px;
+}
+    #list-text{
+    visibility: hidden;
+    width: 0px;
+    }
+    #icons-hide{   
+        display:none;
+    }
+}
+
+/* 6280885825 */

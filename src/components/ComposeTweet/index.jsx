@@ -39,7 +39,7 @@ const ComposeTweet = () => {
                             </div>
                         </div>
                         <div>
-                            <button type="primary" shape="round" size="large" className="bg-blue-500 rounded-full font-medium text-white px-4 py-3 ">
+                            <button type="primary" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white px-4 py-3 ">
                                 Tweet
                             </button>
                         </div>

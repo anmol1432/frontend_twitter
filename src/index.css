@@ -15,3 +15,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.button:active{
+    transition: 0.3s;
+    animation-duration: 0.3s;
+    transform: scale(1.2);
+}

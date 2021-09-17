@@ -1,0 +1,24 @@
+#Userpage{
+    background-color:black;   
+    height: 100vh;
+    width: 100vw;
+}
+#border{
+    border: 1px solid #232628;
+}
+
+#home{
+    font-size: 1.2rem;
+    color:#d8d8d8;
+}
+
+@media (max-width:500px) {
+    #newSection{
+        display: none;
+    }
+}
+@media (max-width:770px) {
+#newSection{
+        display: none;
+    }
+}
