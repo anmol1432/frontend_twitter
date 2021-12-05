@@ -18,9 +18,9 @@ const apiTasks = new ApiCore({
     single: single
 });
 
-apiTasks.massUpdate = () => {
-    // Add custom api call logic here
-}
+// apiTasks.massUpdate = () => {
+//     // Add custom api call logic here
+// }
 
 module.export = apiTasks;
 
@@ -44,3 +44,56 @@ module.export = apiTasks;
 // API collections as needed while still keeping a consistent base for the majority of our code.
 
 // response.js --> Middleware to handle response parsing, error handling, logging, etc...
+
+
+
+//  Useage example :----
+    // import { apiTasks } from '@/services/api';
+
+    // export function Tasks() {
+    //     const [tasks, setTasks] = useState([]);
+
+    //     useEffect(() => {
+    //         _getTasks();
+    //     }, []);
+
+    //     function _getTasks() {
+    //         apiTasks.getAll().then((res) => {
+    //             let arr = _parseTasks(res.results.data);
+    //             setTasks(arr);
+    //         });
+    //     }
+
+    //     function _parseTasks(tasks) {
+    //         return tasks.map((task) => {
+    //             // Parse task information
+    //             return task;
+    //         });
+    //     }
+
+    //     function _createTask(task) {
+    //         apiTasks.post(task).then((res) => {
+    //             // state logic
+    //         });
+    //     }
+
+    //     function _updateTask(task) {
+    //         apiTasks.patch(task).then((res) => {
+    //             // state logic
+    //         });
+    //     }
+
+    //     function _removeTask(id) {
+    //         apiTasks.remove(id).then((res) => {
+    //             // state logic
+    //         });
+    //     }
+
+    //     return (
+    //         <ul>
+    //             {tasks.map((task) => (
+    //                 <li key={task.id}>{task.name}</li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
