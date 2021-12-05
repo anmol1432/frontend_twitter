@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 
 const Home = () => {
@@ -66,4 +67,14 @@ const Home = () => {
     )
 }
 
-export default Home;
+
+
+// Map Redux state to React component props
+const mapStateToProps = (state) => ({
+    Blogs: state.Blogs.Blogs,
+})
+
+// Connect Redux to React
+export default connect(mapStateToProps)(Home);
+
+
