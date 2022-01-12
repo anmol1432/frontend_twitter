@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/index";
 import "./index.css"
@@ -8,9 +8,6 @@ const Login = () => {
     const handleSubmit = e => {
         e.preventDefault();
     };
-    useEffect(() => {
-        console.log();
-    }, [])
 
     return (
         <>
