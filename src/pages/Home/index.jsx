@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 const Home = () => {
-    const history = useHistory()
     return (
         <div>
             <div className="relative min-h-screen  grid bg-black ">
@@ -43,21 +42,28 @@ const Home = () => {
                             <div className="flex flex-row justify-center items-center space-x-3"></div>
 
                             <div>
+                                <Link to={"/signin"}>
                                 <button
                                     type="submit"
                                     className="lg:w-3/5 w-full flex justify-center text-gray-100 p-4   rounded-full tracking-wide font-bold  focus:outline-none focus:shadow-outline hover:bg-blue-500 shadow-lg bg-blue-500 cursor-pointer transition ease-in duration-300"
-                                >
+                                    >
                                     Sign up
                                 </button>
+                                </Link>
                             </div>
                             <div>
+                                <Link to={"/login"}>    
                                 <button
-                                    onClick={() => history.push('/login')}
                                     type="submit"
-                                    className="lg:w-3/5 w-full flex justify-center border-blue-500 bg-transparent text-gray-100 p-4 border rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-gray-900 shadow-lg cursor-pointer transition ease-in duration-300"
-                                >
+                                    className="lg:w-3/5 w-full flex justify-center 
+                                    border-blue-500 bg-transparent text-gray-100 p-4 border
+                                    rounded-full tracking-wide font-semibold
+                                    focus:outline-none focus:shadow-outline
+                                    hover:bg-gray-900 shadow-lg cursor-pointer
+                                    transition ease-in duration-300">
                                     Log in
                                 </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
