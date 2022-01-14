@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const Input = ({ type, name, children }) => {
-    console.log("children",children);
     const [active, setActive] = useState(false);
     function handleActivation(e) {
         setActive(!!e.target.value);
