@@ -33,34 +33,15 @@ const Signup = ({ Blogs }) => {
                     </div>
                     <div className="w-10/12 mx-auto">
                         <form onSubmit={handleSubmit} className="flex flex-col" >
-                            <Input name="username" type="text" className="mb-2" children={"User Name"} />
-                            <Input name="Email" type="text" className="mb-2" children={"Email"} />
-                            <Input name="Email" type="number" className="mb-2" children={"Phone number"} />
+                            <Input name="userName" type="text" className="mb-2" children={"User Name"} />
+                            <Input name="email" type="email" className="mb-2" children={"Email"} pattern={'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'} />
+                            <Input name="phoneNumber" type="tel" className="mb-2" children={"Phone number"} pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"} />
                             <Input name="password" type="password" className="mb-2" children={"Password"} />
-                            <Input name="ConfirmPassword" type="password" className="mb-2" children={"Confirm Password"} />
+                            <Input name="confirmPassword" type="password" className="mb-2" children={"Confirm Password"} />
                             <button type="submit" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
                                 Sign up
                             </button>
                         </form>
-                        {/* <div className="text-center">
-                            <NavLink
-                                to="/"
-                                activeStyle={{
-                                    fontWeight: "bold",
-                                    color: "white"
-                                }}
-                                className="text-blue-500"
-                            >
-                                Forget passowrd ?
-                            </NavLink>
-                            <NavLink
-                                to="/"
-
-                                className="text-blue-500 ml-4 font-extrabold border-b-2 hover:border-blue-500"
-                            >
-                                or register now
-                            </NavLink>
-                        </div> */}
                     </div>
                 </div>
             </div>
