@@ -15,7 +15,6 @@ const SIGN_IN = (name,email, phoneNumber,passowrd,confirmPassword) => {
 }
 
 
-
 export {
     SIGN_IN,
     signIn
