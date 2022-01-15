@@ -35,6 +35,7 @@ const Signup = ({ Blogs }) => {
                         <form onSubmit={handleSubmit} className="flex flex-col" >
                             <Input name="username" type="text" className="mb-2" children={"User Name"} />
                             <Input name="Email" type="text" className="mb-2" children={"Email"} />
+                            <Input name="Email" type="number" className="mb-2" children={"Phone number"} />
                             <Input name="password" type="password" className="mb-2" children={"Password"} />
                             <Input name="ConfirmPassword" type="password" className="mb-2" children={"Confirm Password"} />
                             <button type="submit" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
