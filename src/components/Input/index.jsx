@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Input = ({ type, name, children }) => {
+const Input = ({ type, name, children, pattern }) => {
     const [active, setActive] = useState(false);
     function handleActivation(e) {
         setActive(!!e.target.value);
@@ -17,6 +17,7 @@ const Input = ({ type, name, children }) => {
                 type={type}
                 onChange={handleActivation}
                 style={{ backgroundColor: 'black' }}
+                pattern={pattern}
             />
             <label
                 className={[
