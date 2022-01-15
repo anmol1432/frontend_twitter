@@ -12,6 +12,7 @@ const Input = ({ type, name, children, pattern }) => {
                     "outline-none w-full rounded text-sm text-white transition-all duration-200 ease-in-out p-2 border-blue-500 border-r-2 border-2",
                     active ? "pt-6" : ""
                 ].join(" ")}
+                autoComplete='on'
                 id={name}
                 name={name}
                 type={type}
