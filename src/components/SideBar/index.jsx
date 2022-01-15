@@ -29,7 +29,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-home stroke-current text-gray-100  text-2xl " aria-hidden="true"></i>
+                                <i className="fa fa-home stroke-current text-gray-100  text-2xl " aria-hidden="true"></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible  invisible w-0">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Home</h1>
@@ -42,7 +42,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-hashtag stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
+                                <i className="fa fa-hashtag stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible invisible w-0">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Explore</h1>
@@ -56,7 +56,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-bell stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
+                                <i className="fa fa-bell stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible invisible w-0">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Notification</h1>
@@ -70,7 +70,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-envelope stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
+                                <i className="fa fa-envelope stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible invisible w-0">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Messages</h1>
@@ -83,7 +83,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-bookmark stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true" ></i>
+                                <i className="fa fa-bookmark stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true" ></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible invisible w-0">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Bookmarks</h1>
@@ -96,7 +96,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-list-alt stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
+                                <i className="fa fa-list-alt stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible invisible w-0">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">List</h1>
@@ -109,7 +109,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-user stroke-current text-gray-100 text-2xl sm:hidden" aria-hidden="true"></i>
+                                <i className="fa fa-user stroke-current text-gray-100 text-2xl sm:hidden" aria-hidden="true"></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible invisible w-0">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Profile</h1>
@@ -122,7 +122,7 @@ const SideBar = () => {
                                 border: '3px',
                                 width: "35px"
                             }}>
-                                <i class="fa fa-ellipsis-h stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
+                                <i className="fa fa-ellipsis-h stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
                             </div>
                             <span className="lg:w-9/12 lg:visible invisible w-0 ">
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">More</h1>
