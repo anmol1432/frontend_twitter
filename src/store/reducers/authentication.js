@@ -1,7 +1,7 @@
 import { signIn } from "../action/authentication";
 
 export const initialState = {
-    sigup: {
+    signup: {
         loading: true
     },
     signIn: {
