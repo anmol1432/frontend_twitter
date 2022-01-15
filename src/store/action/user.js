@@ -1,13 +1,22 @@
 const signIn = 'SIGN_IN'
 
 
-const SIGN_IN = (title, content, id) => {
+const SIGN_IN = (name,email, phoneNumber,passowrd,confirmPassword) => {
     return ({
         type: signIn,
         payload: {
-            title,
-            content
+            name,
+            email,
+            phoneNumber,
+            passowrd,
+            confirmPassword
         }
     })
 }
-export { SIGN_IN, signIn }
+
+
+
+export {
+    SIGN_IN,
+    signIn
+}
