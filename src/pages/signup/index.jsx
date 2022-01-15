@@ -5,8 +5,9 @@ import Input from "../../components/Input/index";
 import "./index.css"
 
 
-const Signup = ({ Blogs }) => {
+const Signup = ({ dispatch, User }) => {
     const handleSubmit = e => {
+        console.log("user", User);
         e.preventDefault();
     };
     return (
@@ -52,7 +53,7 @@ const Signup = ({ Blogs }) => {
 
 // Map Redux state to React component props
 const mapStateToProps = (state) => ({
-    Blogs: state.Blogs.Blogs,
+    signup: state.auth.signup,
 })
 
 // Connect Redux to React

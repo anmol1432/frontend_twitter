@@ -77,7 +77,6 @@ const Home = () => {
 
 // Map Redux state to React component props
 const mapStateToProps = (state) => ({
-    Blogs: state.Blogs.Blogs,
 })
 
 // Connect Redux to React
