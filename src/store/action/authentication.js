@@ -1,14 +1,14 @@
 const signIn = 'SIGN_IN'
 
 
-const SIGN_IN = (name,email, phoneNumber,passowrd,confirmPassword) => {
+const SIGN_UP = ({userName,email, phoneNumber,password,confirmPassword}) => {
     return ({
         type: signIn,
         payload: {
-            name,
+            userName,
             email,
             phoneNumber,
-            passowrd,
+            password,
             confirmPassword
         }
     })
@@ -16,6 +16,5 @@ const SIGN_IN = (name,email, phoneNumber,passowrd,confirmPassword) => {
 
 
 export {
-    SIGN_IN,
-    signIn
+    SIGN_UP,signIn
 }
