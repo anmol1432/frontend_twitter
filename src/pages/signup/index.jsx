@@ -1,15 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux'
 import Input from "../../components/Input/index";
+import { SIGN_UP } from "../../store/action/authentication";
 import "./index.css"
 
 
-const Signup = ({ dispatch, User }) => {
-    const handleSubmit = e => {
-        console.log("user", User);
-        e.preventDefault();
+const Signup = ({ dispatch, signup }) => {
+    const [fromValue, setfromValue] = useState({
+        userName: '',
+        email: '',
+        phoneNumber: '',
+        password: '',
+        confirmPassword: ''
+    })
+
+    // useEffect(() => {
+    //     console.log(fromValue);
+    // }, [fromValue])
+
+    const handleSubmit = () => {
+        dispatch(SIGN_UP(fromValue))
     };
+
+    const handleInput = (e) => {
+        let eventValue = e.target.value
+        let eventName = e.target.name
+        setfromValue({ ...fromValue, [eventName]: eventValue })
+    };
+
     return (
         <>
             <div className="block mx-auto " id="login">
@@ -33,13 +52,16 @@ const Signup = ({ dispatch, User }) => {
                         </h1>
                     </div>
                     <div className="w-10/12 mx-auto">
-                        <form onSubmit={handleSubmit} className="flex flex-col" >
-                            <Input name="userName" type="text" className="mb-2" children={"User Name"} />
-                            <Input name="email" type="email" className="mb-2" children={"Email"} pattern={'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'} />
-                            <Input name="phoneNumber" type="tel" className="mb-2" children={"Phone number"} pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"} />
-                            <Input name="password" type="password" className="mb-2" children={"Password"} />
-                            <Input name="confirmPassword" type="password" className="mb-2" children={"Confirm Password"} />
-                            <button type="submit" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
+                        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col" >
+                            <Input name={"userName"} type={"text"} className="mb-2" children={"User Name"} handleInput={handleInput} />
+                            <Input name={"email"} type={"email"} className="mb-2" children={"Email"} handleInput={handleInput} />
+                            <Input name={"phoneNumber"} type={"tel"} className="mb-2" children={"Phone number"} handleInput={handleInput} />
+                            <Input name={"password"} type={"password"} className="mb-2" children={"Password"} handleInput={handleInput} />
+                            <Input name={"confirmPassword"} type={"password"} className="mb-2" children={"Confirm Password"} handleInput={handleInput} />
+                            <button type="submit"
+                                onClick={handleSubmit}
+                                shape="round" size="large"
+                                className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
                                 Sign up
                             </button>
                         </form>
