@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 
-const Input = ({ type, name, children, pattern }) => {
+const Input = ({ type, name, children, pattern, handleInput }) => {
     const [active, setActive] = useState(false);
+
     function handleActivation(e) {
+        e.preventDefault()
         setActive(!!e.target.value);
     }
+
     return (
         <div className="relative rounded my-3  text-white">
             <input
@@ -16,7 +19,7 @@ const Input = ({ type, name, children, pattern }) => {
                 id={name}
                 name={name}
                 type={type}
-                onChange={handleActivation}
+                onChange={(event) => { handleActivation(event); handleInput(event) }}
                 style={{ backgroundColor: 'black' }}
                 pattern={pattern}
             />
