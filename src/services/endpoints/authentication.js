@@ -1,3 +1,3 @@
-export const SIGN_IN = () => {
+export const signIn = () => {
     return `signup/`
 }
