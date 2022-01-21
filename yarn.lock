@@ -8826,6 +8826,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-axios-react@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/use-axios-react/-/use-axios-react-0.2.3.tgz#9edcd41aeb9986b429dbcd422e87b41430f1cee8"
+  integrity sha512-8OLm+D8z6HDRsCTVlY9JqYXneT/VLPgHapMoar7WaoCvMrla+16EzBN6edpQ7Sire8Z2soQS2TStwoxoY4Lp0Q==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
