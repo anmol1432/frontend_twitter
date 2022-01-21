@@ -1,9 +1,9 @@
-const signIn = 'SIGN_IN'
+import { SIGN_IN } from "../CONSTANT";
 
 
 const SIGN_UP = ({userName,email, phoneNumber,password,confirmPassword}) => {
     return ({
-        type: signIn,
+        type: SIGN_IN,
         payload: {
             userName,
             email,
@@ -16,5 +16,5 @@ const SIGN_UP = ({userName,email, phoneNumber,password,confirmPassword}) => {
 
 
 export {
-    SIGN_UP,signIn
+    SIGN_UP
 }
