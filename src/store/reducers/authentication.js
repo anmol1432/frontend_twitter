@@ -1,5 +1,6 @@
-import { signIn } from "../action/authentication";
-import { SIGN_IN } from "../../services/endpoints/authentication";
+import { SIGN_IN } from "../CONSTANT";
+import { signIn } from "../../services/endpoints/authentication";
+import {  } from "../../services/api/index";
 
 export const initialState = {
     signup: {
@@ -12,8 +13,8 @@ export const initialState = {
 
 const authentication = (state = initialState, action) => {
     switch (action.type) {
-        case signIn:
-            
+        case SIGN_IN:
+
             return {...state }
         default:
             return state
