@@ -10,12 +10,9 @@ const apiTasks = new ApiCore({
     getAll: true,
     getSingle: true,
     post: true,
-    put: false,
+    put: true,
     patch: true,
-    delete: false,
-    url: url,
-    plural: plural,
-    single: single
+    delete: true,
 });
 
 // apiTasks.massUpdate = () => {
