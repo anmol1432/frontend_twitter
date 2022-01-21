@@ -1,10 +1,10 @@
-import { SIGN_IN } from "../CONSTANT";
+import { SIGN_UP } from "../CONSTANT";
 import { signIn } from "../../services/endpoints/authentication";
-import {  } from "../../services/api/index";
+import { apiProvider } from "../../services/api/provider";
 
 export const initialState = {
     signup: {
-        loading: true
+        loading: false
     },
     signIn: {
         loading:true
@@ -13,9 +13,11 @@ export const initialState = {
 
 const authentication = (state = initialState, action) => {
     switch (action.type) {
-        case SIGN_IN:
-
-            return {...state }
+        case SIGN_UP:
+            apiProvider.post(signIn(), action.payload).then((res) => {
+                console.log("res ",res);
+            }).catch((error) => console.error( error))
+            return {...state}
         default:
             return state
     }

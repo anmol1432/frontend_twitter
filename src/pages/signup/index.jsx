@@ -2,30 +2,30 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux'
 import Input from "../../components/Input/index";
-import { SIGN_UP } from "../../store/action/authentication";
+import { signUp } from "../../store/action/authentication";
 import "./index.css"
 
 
 const Signup = ({ dispatch, signup }) => {
     const [fromValue, setfromValue] = useState({
-        userName: '',
+        name: '',
         email: '',
-        phoneNumber: '',
+        phone: '',
         password: '',
         confirmPassword: ''
     })
-
     // useEffect(() => {
     //     console.log(fromValue);
     // }, [fromValue])
 
     const handleSubmit = () => {
-        dispatch(SIGN_UP(fromValue))
+        dispatch(signUp(fromValue))
     };
 
     const handleInput = (e) => {
         let eventValue = e.target.value
         let eventName = e.target.name
+        console.log({ [eventName]: eventValue });
         setfromValue({ ...fromValue, [eventName]: eventValue })
     };
 
@@ -53,9 +53,9 @@ const Signup = ({ dispatch, signup }) => {
                     </div>
                     <div className="w-10/12 mx-auto">
                         <form onSubmit={(e) => e.preventDefault()} className="flex flex-col" >
-                            <Input name={"userName"} type={"text"} className="mb-2" children={"User Name"} handleInput={handleInput} />
+                            <Input name={"name"} type={"text"} className="mb-2" children={"User Name"} handleInput={handleInput} />
                             <Input name={"email"} type={"email"} className="mb-2" children={"Email"} handleInput={handleInput} />
-                            <Input name={"phoneNumber"} type={"tel"} className="mb-2" children={"Phone number"} handleInput={handleInput} />
+                            <Input name={"phone"} type={"tel"} className="mb-2" children={"Phone number"} handleInput={handleInput} />
                             <Input name={"password"} type={"password"} className="mb-2" children={"Password"} handleInput={handleInput} />
                             <Input name={"confirmPassword"} type={"password"} className="mb-2" children={"Confirm Password"} handleInput={handleInput} />
                             <button type="submit"
