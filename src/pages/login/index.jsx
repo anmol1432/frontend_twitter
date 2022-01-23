@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
+import { signIn } from "../../store/action/authentication";
 import Input from "../../components/Input/index";
 import "./index.css"
 
 
-const Login = () => {
-    const handleSubmit = e => {
-        e.preventDefault();
+const Login = ({ dispatch, sign_in }) => {
+    const [fromValue, setfromValue] = useState({
+        email: '',
+        password: '',
+    })
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(signIn(fromValue))
+    };
+
+    const handleInput = (e) => {
+        let eventValue = e.target.value
+        let eventName = e.target.name
+        setfromValue({ ...fromValue, [eventName]: eventValue })
     };
 
     return (
@@ -33,10 +47,13 @@ const Login = () => {
                     </div>
                     <div className="w-10/12 mx-auto">
                         <form onSubmit={handleSubmit} className="flex flex-col" >
-                            <Input name="username" type="text" className="mb-2">Phone,email,username</Input>
-                            <Input name="username" type="text" className="mb-2">Password</Input>
-                            <button type="primary" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
-                                Log in
+                            <Input name={"email"} type={"text"} className="mb-2" children={"Email , userName"} handleInput={handleInput} />
+                            <Input name={"password"} type={"password"} className="mb-2" children={"Password"} handleInput={handleInput} />
+                            <button type="submit"
+                                onClick={handleSubmit}
+                                shape="round" size="large"
+                                className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
+                                Submit
                             </button>
                         </form>
                         <div className="text-center">
@@ -52,7 +69,6 @@ const Login = () => {
                             </NavLink>
                             <NavLink
                                 to="/"
-
                                 className="text-blue-500 ml-4 font-extrabold border-b-2 hover:border-blue-500"
                             >
                                 or register now
@@ -65,4 +81,10 @@ const Login = () => {
     )
 }
 
-export default Login;
+// Map Redux state to React component props
+const mapStateToProps = (state) => ({
+    sign_in: state.auth.signIn,
+})
+
+// Connect Redux to React
+export default connect(mapStateToProps)(Login);

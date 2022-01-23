@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux'
 import Input from "../../components/Input/index";
@@ -6,7 +6,7 @@ import { signUp } from "../../store/action/authentication";
 import "./index.css"
 
 
-const Signup = ({ dispatch, signup }) => {
+const Signup = ({ dispatch, sign_up }) => {
     const [fromValue, setfromValue] = useState({
         name: '',
         email: '',
@@ -25,7 +25,6 @@ const Signup = ({ dispatch, signup }) => {
     const handleInput = (e) => {
         let eventValue = e.target.value
         let eventName = e.target.name
-        console.log({ [eventName]: eventValue });
         setfromValue({ ...fromValue, [eventName]: eventValue })
     };
 
@@ -75,7 +74,7 @@ const Signup = ({ dispatch, signup }) => {
 
 // Map Redux state to React component props
 const mapStateToProps = (state) => ({
-    signup: state.auth.signup,
+    sign_up: state.auth.signup,
 })
 
 // Connect Redux to React
