@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
 import { signIn } from "../../store/action/authentication";
 import Input from "../../components/Input/index";
+import { Spin } from 'antd';
 import "./index.css"
 
 
-const Login = ({ dispatch, sign_in }) => {
+const Login = ({ dispatch, sign_in, sign_in_loading }) => {
     const [fromValue, setfromValue] = useState({
         email: '',
         password: '',
     })
+    useEffect(() => {
+        console.log("sign_in_loading", sign_in_loading);
+    }, []);
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log("sign_in_loading", sign_in_loading);
         dispatch(signIn(fromValue))
     };
 
@@ -52,6 +59,7 @@ const Login = ({ dispatch, sign_in }) => {
                             <button type="submit"
                                 onClick={handleSubmit}
                                 shape="round" size="large"
+                                id="loginBtn"
                                 className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
                                 Submit
                             </button>
@@ -84,6 +92,7 @@ const Login = ({ dispatch, sign_in }) => {
 // Map Redux state to React component props
 const mapStateToProps = (state) => ({
     sign_in: state.auth.signIn,
+    sign_in_loading: state.auth.signIn.loading,
 })
 
 // Connect Redux to React

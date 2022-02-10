@@ -1,7 +1,12 @@
 import React from 'react'
+import {
+    LogoutOutlined
+} from '@ant-design/icons';
+import { useHistory } from "react-router-dom"
 import './index.css'
 
 const SideBar = () => {
+    let history = useHistory();
     return (
         <div>
             <div className=" " id="sidebar">
@@ -111,7 +116,7 @@ const SideBar = () => {
                             }}>
                                 <i className="fa fa-user stroke-current text-gray-100 text-2xl sm:hidden" aria-hidden="true"></i>
                             </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0">
+                            <span className="lg:w-9/12 lg:visible invisible w-0" onClick={() => history.push(`${"/profile/123"}`)}>
                                 <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Profile</h1>
                             </span>
                         </div>
@@ -132,12 +137,20 @@ const SideBar = () => {
                         <button type="primary" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white w-8/12 py-3 mt-2 items-end lg:visible md:invisible invisible" id="icons-hide">
                             Tweet
                         </button>
+                        {
+                            localStorage.getItem("token") ? < button onClick={() => {
+                                localStorage.removeItem("token")
+                                history.push("/login")
+                            }} type="primary" shape="round" size="large" className="button bg-transparent border-2  rounded-full font-medium text-white w-8/12 py-3 mt-2 items-end lg:visible md:invisible invisible" id="icons-hide">
+                                logout
+                            </button> : <></>
+                        }
                     </div>
                 </div>
                 {/*  */}
                 <div></div>
             </div>
-        </div>
+        </div >
     )
 }
 

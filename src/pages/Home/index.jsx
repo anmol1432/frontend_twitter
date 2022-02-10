@@ -34,7 +34,7 @@ const Home = () => {
                                         </g>
                                     </svg>
                                 </h2>
-                                <h2 className="mt-6  font-bold text-gray-100 sm:text-5xl md:text-6xl lg:text-6xl">
+                                <h2 className=" mt-6 font-bold text-gray-100 sm:text-5xl md:text-6xl lg:text-6xl">
                                     Happening now
                                 </h2>
                                 <p className="mt-10 text-4xl text-gray-200 font-medium">Join Twitter today.</p>
