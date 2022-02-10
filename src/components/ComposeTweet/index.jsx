@@ -9,7 +9,7 @@ const ComposeTweet = () => {
                 <div className="rounded-xl bg-black  w-full">
                     <div className="flex p-4">
                         <div className="w-3/12">
-                            <img className="rounded-full w-14" src="https://pbs.twimg.com/profile_images/1367267802940375042/H4JDd6aC_400x400.jpg" alt="profile_img" />
+                            <img className="rounded-full w-14" src="https://images.unsplash.com/photo-1638913976381-5b8ed66c36d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="profile_img" />
                         </div>
                         <div className="ml-3 flex flex-col w-full">
                             <textarea placeholder="What's happening?" className="w-full  resize-none outline-none h-22 bg-black"></textarea>
@@ -22,7 +22,7 @@ const ComposeTweet = () => {
                     <div className="flex items-center text-blue-500 justify-between py-2 px-4">
                         <div></div>
                         <div className="flex text-2xl lg:pl-12 w-8/12 ml-6">
-                            <div className="flex items-center justify-center p-3  rounded-full cursor-pointer">  
+                            <div className="flex items-center justify-center p-3  rounded-full cursor-pointer">
                                 <i className="fas fa-image" ></i>
                             </div>
 
