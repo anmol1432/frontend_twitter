@@ -7,7 +7,7 @@ export const initialState = {
         loading: false
     },
     signIn: {
-        loading:false
+        loading: false
     }
 }
 
@@ -15,20 +15,25 @@ const authentication = (state = initialState, action) => {
     switch (action.type) {
         case SIGN_UP:
             apiProvider.post(signUp(), action.payload).then((res) => {
-                console.log("res ",res);
-            }).catch((error) => console.error( error))
-            return {...state}
-            case SIGN_IN:
-            state.signIn.loading = true
+
+            }).catch((error) => console.error(error))
+            return { ...state }
+        case SIGN_IN:
             apiProvider.post(signIn(), action.payload).then((res) => {
-                if (res.message) {
-                    // console.log(state.signIn.loading , "f" );
-                    state.signIn.loading = false
-                    // console.log(state.signIn.loading , "l" );
+                state.signIn.loading = true
+                if (res.message == "Success") {
+                    localStorage.setItem('token', res.data.jwt)
+                    window.location.href = '/home'
+                    return {
+                        ...state,
+                        signIn: {
+                            loading: false
+                        }
+                    }
                 }
-                console.log("res ",res);
-            }).catch((error) => console.error( error))
-            return {...state} 
+                return { ...state }
+            }
+            ).catch((error) => console.error(error))
         default:
             return state
     }
