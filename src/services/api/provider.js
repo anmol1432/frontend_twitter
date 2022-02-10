@@ -7,11 +7,16 @@ import { handleResponse, handleError } from './response';
 // Pulling from your .env file when on the server or from localhost when locally
 // const BASE_URL = 'http://127.0.0.1:3333/api/v1';
 const BASE_URL = 'http://localhost:5000';
+const config = {
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+    credentials: 'include',
+};
+
 
 /* @param {string} resource */
 const getAll = (resource) => {
     return axios
-        .get(`${BASE_URL}/${resource}`)
+        .get(`${BASE_URL}/${resource}`, config,{withCredentials: true})
         .then(handleResponse)
         .catch(handleError);
 };
@@ -20,7 +25,7 @@ const getAll = (resource) => {
 /* @param {string} id */
 const getSingle = (resource, id) => {
     return axios
-        .get(`${BASE_URL}/${resource}/${id}`)
+        .get(`${BASE_URL}/${resource}/${id}`,config)
         .then(handleResponse)
         .catch(handleError);
 };
@@ -29,8 +34,7 @@ const getSingle = (resource, id) => {
 /* @param {object} model */
 const post = (resource, model) => {
     return axios
-        .post(`${BASE_URL}/${resource}`, model)
-        .then(handleResponse)
+        .post(`${BASE_URL}/${resource}`, model,config) .then(handleResponse)
         .catch(handleError);
 };
 
@@ -38,7 +42,7 @@ const post = (resource, model) => {
 /* @param {object} model */
 const put = (resource, model) => {
     return axios
-        .put(`${BASE_URL}/${resource}`, model)
+        .put(`${BASE_URL}/${resource}`, model,config)
         .then(handleResponse)
         .catch(handleError);
 };
@@ -47,7 +51,7 @@ const put = (resource, model) => {
 /* @param {object} model */
 const patch = (resource, model) => {
     return axios
-        .patch(`${BASE_URL}/${resource}`, model)
+        .patch(`${BASE_URL}/${resource}`, model,config)
         .then(handleResponse)
         .catch(handleError);
 };
@@ -56,7 +60,7 @@ const patch = (resource, model) => {
 /* @param {string} id */
 const remove = (resource, id) => {
     return axios
-        .delete(`${BASE_URL}/${resource}`, id)
+        .delete(`${BASE_URL}/${resource}`, id,config)
         .then(handleResponse)
         .catch(handleError);
 };
