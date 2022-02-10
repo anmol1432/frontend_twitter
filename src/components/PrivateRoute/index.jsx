@@ -1,18 +1,19 @@
 
-import React from "react"
-import { Route, Redirect } from "react-router-dom"
+import React, { useEffect } from "react"
+import { Route, Redirect, useHistory } from "react-router-dom"
 
-export const PrivateRoute = ({ path, Component, rest }) => {
-    console.log("asdfasdfasd")
-    // const authentication = true
-    return (<Route
-        exact
-        path={path}
-        render={(rest) => {
-            if (true) {
-                return <Component />
+export const PrivateRoute = ({ component: Component, ...restOfProps }) => {
+    const isAuthenticated = localStorage.getItem("token");
+    console.log("this", isAuthenticated);
+
+    return (
+        <Route
+            {...restOfProps}
+            render={(props) =>
+                isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
             }
-            <Redirect to="/" />
-        }}
-    />)
-};
+        />
+    );
+}
+
+export default PrivateRoute;
