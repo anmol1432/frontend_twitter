@@ -1,18 +1,87 @@
 import React from 'react'
 import {
-    LogoutOutlined
+    HomeOutlined, BorderlessTableOutlined, BellOutlined,
+    MessageOutlined, BookOutlined, UnorderedListOutlined,
+    UserOutlined, EllipsisOutlined
 } from '@ant-design/icons';
-import { useHistory } from "react-router-dom"
+import { useHistory, NavLink } from "react-router-dom"
 import './index.css'
+
+
+const SingleLink = ({ linkText, icon, adress }) => {
+    return (
+        <>
+            <NavLink to={String(adress)} >
+                <div className="flex items-center p-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300">
+                    <div className="icons lg:w-3/12 w-full text-center rounded-full border-gray-100" style={{
+                        height: "35px",
+                        padding: "2px",
+                        border: '3px',
+                        width: "35px"
+                    }}>
+
+                        {icon}
+                    </div>
+                    <span className="lg:w-9/12 lg:visible  invisible w-0">
+                        <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">{linkText}</h1>
+                    </span>
+                </div>
+            </NavLink>
+        </>
+    )
+}
 
 const SideBar = () => {
     let history = useHistory();
+
+    const navTabs = [
+        {
+            linkText: 'Home',
+            icon: <HomeOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: "/home"
+        },
+        {
+            linkText: 'Explore',
+            icon: <BorderlessTableOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: "/explore"
+        },
+        {
+            linkText: 'Notifications',
+            icon: <BellOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: "/notification"
+        },
+        {
+            linkText: 'Messages',
+            icon: <MessageOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: "/messages"
+        },
+        {
+            linkText: 'Bookmarks',
+            icon: <BookOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: "/bookmarks/tweet"
+        },
+        {
+            linkText: 'List',
+            icon: <UnorderedListOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: "/list"
+        },
+        {
+            linkText: 'Profile',
+            icon: <UserOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: `/pofile/123`
+        },
+        {
+            linkText: 'More',
+            icon: <EllipsisOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+            adress: `/more`
+        }
+    ]
     return (
         <div>
             <div className=" " id="sidebar">
                 {/*  */}
                 <div className="flex items-center space-x-0 ">
-                    <svg viewBox="0 0 24 24" className="my-6  ml-14 lg:h-8 h-12 lg:visible invisible  " fill="currentColor">
+                    <svg viewBox="0 0 24 24" className="my-6  lg:h-8 h-12 lg:visible invisible  " fill="currentColor">
                         <path className="text-gray-100" d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49
                         2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658
                         2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63
@@ -26,114 +95,8 @@ const SideBar = () => {
                 </div>
                 {/*  */}
                 <div className="block m-auto ">
-                    <div className="flex flex-col  justify-around items-center lg:rounded-xl h-4/6" id="sidebarList">
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300">
-                            <div className="icons lg:w-3/12 w-full text-center rounded-full border-gray-100" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-home stroke-current text-gray-100  text-2xl " aria-hidden="true"></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible  invisible w-0">
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Home</h1>
-                            </span>
-                        </div>
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300" id="icons-hide">
-                            <div className="icons lg:w-3/12  text-center rounded-full border-gray-100 w-full" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-hashtag stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0">
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Explore</h1>
-                            </span>
-                        </div>
-
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300">
-                            <div className="icons w-3/12  text-center rounded-full border-gray-100" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-bell stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0">
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Notification</h1>
-                            </span>
-                        </div>
-
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300">
-                            <div className="icons w-3/12  text-center rounded-full border-gray-100" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-envelope stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0">
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Messages</h1>
-                            </span>
-                        </div>
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300" id="icons-hide">
-                            <div className="icons w-3/12  text-center rounded-full border-gray-100" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-bookmark stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true" ></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0">
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Bookmarks</h1>
-                            </span>
-                        </div>
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300" id="icons-hide">
-                            <div className="icons w-3/12  text-center rounded-full border-gray-100" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-list-alt stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0">
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">List</h1>
-                            </span>
-                        </div>
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300">
-                            <div className="icons w-3/12  text-center rounded-full border-gray-100" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-user stroke-current text-gray-100 text-2xl sm:hidden" aria-hidden="true"></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0" onClick={() => history.push(`${"/profile/123"}`)}>
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">Profile</h1>
-                            </span>
-                        </div>
-                        <div className="flex items-center w-8/12 py-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300" >
-                            <div className="icons w-3/12  text-center rounded-full border-gray-100" style={{
-                                height: "35px",
-                                padding: "2px",
-                                border: '3px',
-                                width: "35px"
-                            }}>
-                                <i className="fa fa-ellipsis-h stroke-current text-gray-100  text-2xl sm:hidden" aria-hidden="true"></i>
-                            </div>
-                            <span className="lg:w-9/12 lg:visible invisible w-0 ">
-                                <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">More</h1>
-                            </span>
-                        </div>
-
+                    <div className="flex flex-col  justify-around  items-start lg:rounded-xl h-4/6" id="sidebarList">
+                        {navTabs.map((item) => SingleLink({ ...item }))}
                         <button type="primary" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white w-8/12 py-3 mt-2 items-end lg:visible md:invisible invisible" id="icons-hide">
                             Tweet
                         </button>

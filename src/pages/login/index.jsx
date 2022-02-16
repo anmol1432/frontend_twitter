@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { signIn } from "../../store/action/authentication";
 import Input from "../../components/Input/index";
 import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import "./index.css"
 
 
@@ -13,8 +14,13 @@ const Login = ({ dispatch, sign_in, sign_in_loading }) => {
         email: '',
         password: '',
     })
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
     useEffect(() => {
         console.log("sign_in_loading", sign_in_loading);
+        if (sign_in_loading) {
+            // console.log("const antIcon ", sign_in_loading);
+            ReactDOM.render(<Spin indicator={antIcon} />, document.querySelector('#loginBtn'));
+        }
     }, []);
 
 
@@ -63,6 +69,7 @@ const Login = ({ dispatch, sign_in, sign_in_loading }) => {
                                 className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
                                 Submit
                             </button>
+
                         </form>
                         <div className="text-center">
                             <NavLink

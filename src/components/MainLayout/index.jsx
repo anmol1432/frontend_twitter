@@ -8,7 +8,7 @@ const MainLayout = ({ ChildComponent }) => {
         <>
             <div className=" " id="Userpage">
                 <div className="text-blue-500 flex justify-evenly">
-                    <div className="lg:w-3/12 md:3/12 md:relative md:px-12 z-40 lg:visible md:visible heightFull w-0 " id="bottom-nav">
+                    <div className="lg:w-3/12 md:3/12 md:relative md:px-4 z-40 lg:visible md:visible heightFull w-0 " id="bottom-nav">
                         <SideBar />
                     </div>
                     {/* div for compose tweet and tweets */}

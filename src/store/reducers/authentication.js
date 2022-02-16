@@ -34,6 +34,7 @@ const authentication = (state = initialState, action) => {
                 return { ...state }
             }
             ).catch((error) => console.error(error))
+            return { ...state }
         default:
             return state
     }

@@ -3,6 +3,7 @@ import ComposeTweet from "../../components/ComposeTweet/index";
 import MainLayout from "../../components/MainLayout/index";
 import ViewProfile from "../../components/Profile/index";
 import stars from "../../Assets/img/stars.png";
+import { ArrowLeftOutlined } from '@ant-design/icons';
 import "./index.css"
 
 const Profile = () => {
@@ -19,9 +20,11 @@ const Profile = () => {
                                 onClick={() => ""}
                                 alt="profile_images"
                             />
-                            <h1 className="lg:m-0 ml-6 ">Home</h1>
+                            <h1 className="lg:m-0 ml-6 flex ">
+                                <ArrowLeftOutlined className="p-2 mr-2 rounded-full hover:bg-slate-800" />
+                                <span>⚔️ ANMOL SINGH ☠️</span>
+                            </h1>
                         </span>
-                        <img src={stars} alt="" id="star" className="h-6 w-6 button" />
                     </div>
                     <div id="border">
                         <ViewProfile />

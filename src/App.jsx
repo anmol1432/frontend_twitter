@@ -22,7 +22,7 @@ export const App = () => {
                     <Route exact path={"/"} render={() => localStorage.getItem('token') ? <Redirect to="/home" /> : <Home />} />
                     {/* <Route exact path={"/home"} render={() => <UserPage />} /> */}
                     <PrivateRoute exact path={"/home"} component={UserPage} />
-                    <PrivateRoute exact path={"/profile/:name"} component={Profile} />
+                    <PrivateRoute exact path={"/profile/:id"} component={Profile} />
                     <Route exact path={"/signup"} render={() => localStorage.getItem('token') ? <Redirect to="/home" /> : <Signup />} />
                     <Route exact path={"/login"} render={() => localStorage.getItem('token') ? <Redirect to="/home" /> : <Login />} />
                     <Route exact path={"/error"} render={() => <Error />} />
