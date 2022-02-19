@@ -3,7 +3,8 @@
 }
 
 #sidebarList{
-    height: 70vh    ;
+    height: 70vh;
+    float: right;
 }
 
 #listItem:hover{
