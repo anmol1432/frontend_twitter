@@ -1,6 +1,6 @@
 
-import React, { useEffect } from "react"
-import { Route, Redirect, useHistory } from "react-router-dom"
+import React from "react"
+import { Route, Redirect } from "react-router-dom"
 
 export const PrivateRoute = ({ component: Component, ...restOfProps }) => {
     const isAuthenticated = localStorage.getItem("token");

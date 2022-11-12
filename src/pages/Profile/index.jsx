@@ -1,8 +1,6 @@
 import React from 'react';
-import ComposeTweet from '../../components/ComposeTweet/index';
 import MainLayout from '../../components/MainLayout/index';
 import ViewProfile from '../../components/Profile/index';
-import stars from '../../Assets/img/stars.png';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import './index.css';
 
