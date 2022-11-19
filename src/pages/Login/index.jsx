@@ -1,33 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
-import { signIn } from "../../store/action/authentication";
 import Input from "../../components/Input/index";
-import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+
 import "./index.css"
 
 
-const Login = ({ dispatch, sign_in, sign_in_loading }) => {
+const Login = () => {
     const [fromValue, setfromValue] = useState({
         email: '',
         password: '',
     })
-    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-    useEffect(() => {
-        console.log("sign_in_loading", sign_in_loading);
-        if (sign_in_loading) {
-            // console.log("const antIcon ", sign_in_loading);
-            ReactDOM.render(<Spin indicator={antIcon} />, document.querySelector('#loginBtn'));
-        }
-    }, []);
-
-
+  
     const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("sign_in_loading", sign_in_loading);
-        dispatch(signIn(fromValue))
+        e.preventDefault();
     };
 
     const handleInput = (e) => {
@@ -96,11 +82,4 @@ const Login = ({ dispatch, sign_in, sign_in_loading }) => {
     )
 }
 
-// Map Redux state to React component props
-const mapStateToProps = (state) => ({
-    sign_in: state.auth.signIn,
-    sign_in_loading: state.auth.signIn.loading,
-})
-
-// Connect Redux to React
-export default connect(mapStateToProps)(Login);
+export default Login;

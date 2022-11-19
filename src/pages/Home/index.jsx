@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import {Link } from "react-router-dom";
 
 const Home = () => {
@@ -73,14 +72,6 @@ const Home = () => {
     )
 }
 
-
-
-// Map Redux state to React component props
-const mapStateToProps = (state) => ({
-})
-
-// Connect Redux to React
-export default connect(mapStateToProps)(Home);
-// export default Home;
+export default Home;
 
 

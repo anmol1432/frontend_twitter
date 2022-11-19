@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
-import { connect } from 'react-redux'
 import Input from "../../components/Input/index";
-import { signUp } from "../../store/action/authentication";
 import "./index.css"
 
 
-const Signup = ({ dispatch, sign_up }) => {
+const Signup = ({ dispatch }) => {
     const [fromValue, setfromValue] = useState({
         name: '',
         email: '',
@@ -19,7 +17,6 @@ const Signup = ({ dispatch, sign_up }) => {
     // }, [fromValue])
 
     const handleSubmit = () => {
-        dispatch(signUp(fromValue))
     };
 
     const handleInput = (e) => {
@@ -72,11 +69,5 @@ const Signup = ({ dispatch, sign_up }) => {
 }
 
 
-// Map Redux state to React component props
-const mapStateToProps = (state) => ({
-    sign_up: state.auth.signup,
-})
-
-// Connect Redux to React
-export default connect(mapStateToProps)(Signup);
+export default Signup
 
