@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/index";
-import { LoadingOutlined } from '@ant-design/icons';
-
+import axiosInst from "../../services/api.config";
+import axios from "axios";
 import "./index.css"
 
 
@@ -11,9 +11,13 @@ const Login = () => {
         email: '',
         password: '',
     })
-  
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        axiosInst.post("signin", {
+            email: fromValue.email,
+            password: fromValue.password
+        })
     };
 
     const handleInput = (e) => {
