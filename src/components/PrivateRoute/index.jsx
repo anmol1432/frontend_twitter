@@ -1,11 +1,10 @@
 
 import React from "react"
 import { Route, Redirect } from "react-router-dom"
+import storageKeys from "../../services/localStorageKeys";
 
 export const PrivateRoute = ({ component: Component, ...restOfProps }) => {
-    const isAuthenticated = localStorage.getItem("token");
-    console.log("this", isAuthenticated);
-
+    const isAuthenticated = localStorage.getItem(storageKeys.token);
     return (
         <Route
             {...restOfProps}

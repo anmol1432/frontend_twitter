@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
 import Input from "../../components/Input/index";
+import axiosInst from "../../services/api.config";
 import "./index.css"
 
 
@@ -16,9 +17,17 @@ const Signup = ({ dispatch }) => {
     //     console.log(fromValue);
     // }, [fromValue])
 
-    const handleSubmit = () => {
-    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axiosInst.post("signup", {
+            name: fromValue.name,
+            email: fromValue.email,
+            password: fromValue.password,
+            confirmPassword: fromValue.confirmPassword,
+            phone: fromValue.phone
 
+        });
+    }
     const handleInput = (e) => {
         let eventValue = e.target.value
         let eventName = e.target.name
@@ -48,7 +57,7 @@ const Signup = ({ dispatch }) => {
                         </h1>
                     </div>
                     <div className="w-10/12 mx-auto">
-                        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col" >
+                        <form onSubmit={handleSubmit} className="flex flex-col" >
                             <Input name={"name"} type={"text"} className="mb-2" children={"User Name"} handleInput={handleInput} />
                             <Input name={"email"} type={"email"} className="mb-2" children={"Email"} handleInput={handleInput} />
                             <Input name={"phone"} type={"tel"} className="mb-2" children={"Phone number"} handleInput={handleInput} />

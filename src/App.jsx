@@ -12,6 +12,7 @@ import Profile from "./pages/Profile/index";
 import UserPage from "./pages/UserPage/index";
 import PrivateRoute from "./components/PrivateRoute/index";
 import Error from "./pages/404/index";
+import storageKeys from "./services/localStorageKeys";
 
 
 export const App = () => {
@@ -19,12 +20,12 @@ export const App = () => {
         <Router>
             <>
                 <Switch>
-                    <Route exact path={"/"} render={() => localStorage.getItem('token') ? <Redirect to="/home" /> : <Home />} />
+                    <Route exact path={"/"} render={() => localStorage.getItem(storageKeys.token) ? <Home /> : <Redirect to="/login" />} />
                     {/* <Route exact path={"/home"} render={() => <UserPage />} /> */}
-                    <PrivateRoute exact path={"/home"} component={UserPage} />
+                    <PrivateRoute exact path={"/user"} component={UserPage} />
                     <PrivateRoute exact path={"/profile/:id"} component={Profile} />
-                    <Route exact path={"/signup"} render={() => localStorage.getItem('token') ? <Redirect to="/home" /> : <Signup />} />
-                    <Route exact path={"/login"} render={() => localStorage.getItem('token') ? <Redirect to="/home" /> : <Login />} />
+                    <Route exact path={"/signup"} render={() => localStorage.getItem(storageKeys.token) ? < UserPage /> : <Signup />} />
+                    <Route exact path={"/login"} render={() => localStorage.getItem(storageKeys.token) ? < UserPage /> : <Login />} />
                     <Route exact path={"/error"} render={() => <Error />} />
                     <Redirect to="/error" />
                 </Switch>

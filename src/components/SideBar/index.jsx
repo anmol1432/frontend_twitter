@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { useHistory, NavLink } from "react-router-dom"
 import './index.css'
+import storageKeys from '../../services/localStorageKeys';
 
 
 const SingleLink = ({ linkText, icon, adress }) => {
@@ -38,7 +39,7 @@ const SideBar = () => {
         {
             linkText: 'Home',
             icon: <HomeOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
-            adress: "/home"
+            adress: "/user"
         },
         {
             linkText: 'Explore',
@@ -105,8 +106,8 @@ const SideBar = () => {
                             Tweet
                         </button>
                         {
-                            localStorage.getItem("token") ? < button onClick={() => {
-                                localStorage.removeItem("token")
+                            localStorage.getItem(storageKeys.token) ? < button onClick={() => {
+                                localStorage.removeItem(storageKeys.token)
                                 history.push("/login")
                             }} type="primary" shape="round" size="large" className="button bg-transparent border-2  rounded-full font-medium text-white w-full py-3 mt-2 items-end lg:visible md:invisible invisible" id="icons-hide">
                                 logout

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import Input from "../../components/Input/index";
 import axiosInst from "../../services/api.config";
-import axios from "axios";
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 import "./index.css"
 
 
@@ -11,12 +12,23 @@ const Login = () => {
         email: '',
         password: '',
     })
-
+    const [loading, setloading] = useState(false)
+    const history = useHistory()
+    const loadingIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
     const handleSubmit = (e) => {
         e.preventDefault();
+        setloading(true)
         axiosInst.post("signin", {
             email: fromValue.email,
             password: fromValue.password
+        }).then((res) => {
+            if (res.data) {
+                history.push("/user");
+            }
+            else {
+                setloading(false)
+                history.push('/login')
+            }
         })
     };
 
@@ -57,7 +69,7 @@ const Login = () => {
                                 shape="round" size="large"
                                 id="loginBtn"
                                 className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
-                                Submit
+                                {loading ? < Spin indicator={loadingIcon} /> : 'Submit'}
                             </button>
 
                         </form>

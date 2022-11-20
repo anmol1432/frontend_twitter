@@ -41,7 +41,7 @@ const Home = () => {
                             <div className="flex flex-row justify-center items-center space-x-3"></div>
 
                             <div>
-                                <Link to={"/signin"}>
+                                <Link to={"/signup"}>
                                 <button
                                     type="submit"
                                     className="lg:w-3/5 w-full flex justify-center text-gray-100 p-4   rounded-full tracking-wide font-bold  focus:outline-none focus:shadow-outline hover:bg-blue-500 shadow-lg bg-blue-500 cursor-pointer transition ease-in duration-300"
