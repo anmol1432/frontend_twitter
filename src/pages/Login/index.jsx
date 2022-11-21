@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { NavLink, useHistory } from "react-router-dom";
 import Input from "../../components/Input/index";
 import axiosInst from "../../services/api.config";
+import axios from "axios";
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import "./index.css"

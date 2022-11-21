@@ -25,7 +25,6 @@ const Signup = ({ dispatch }) => {
             password: fromValue.password,
             confirmPassword: fromValue.confirmPassword,
             phone: fromValue.phone
-
         });
     }
     const handleInput = (e) => {

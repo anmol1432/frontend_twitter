@@ -20,7 +20,7 @@ export const App = () => {
         <Router>
             <>
                 <Switch>
-                    <Route exact path={"/"} render={() => localStorage.getItem(storageKeys.token) ? <Home /> : <Redirect to="/login" />} />
+                    <Route exact path={"/"} render={() => localStorage.getItem(storageKeys.token) ? < UserPage /> : <Home />} />
                     {/* <Route exact path={"/home"} render={() => <UserPage />} /> */}
                     <PrivateRoute exact path={"/user"} component={UserPage} />
                     <PrivateRoute exact path={"/profile/:id"} component={Profile} />
