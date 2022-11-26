@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NavLink, useHistory } from "react-router-dom";
 import Input from "../../components/Input/index";
 import axiosInst from "../../services/api.config";
-import axios from "axios";
+import { signIn } from "../../services/endpoints/authentication";
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import "./index.css"
@@ -19,7 +19,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setloading(true)
-        axiosInst.post("signin", {
+        axiosInst.post(signIn(), {
             email: fromValue.email,
             password: fromValue.password
         }).then((res) => {
@@ -29,6 +29,10 @@ const Login = () => {
             else {
                 setloading(false)
                 history.push('/login')
+            }
+        }).catch((err) => {
+            if (err) {
+                setloading(false)
             }
         })
     };
@@ -69,6 +73,7 @@ const Login = () => {
                                 onClick={handleSubmit}
                                 shape="round" size="large"
                                 id="loginBtn"
+                                disabled={loading}
                                 className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
                                 {loading ? < Spin indicator={loadingIcon} /> : 'Submit'}
                             </button>

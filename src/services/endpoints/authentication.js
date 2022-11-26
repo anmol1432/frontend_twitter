@@ -1,6 +1,6 @@
 export const signUp = () => {
-    return `signup/`
+    return `signup`
 }
 export const signIn = () => {
-    return `signin/`
+    return `signin`
 }

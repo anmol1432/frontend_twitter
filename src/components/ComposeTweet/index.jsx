@@ -12,7 +12,7 @@ const ComposeTweet = () => {
                             <img className="rounded-full w-14" src="https://images.unsplash.com/photo-1638913976381-5b8ed66c36d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="profile_img" />
                         </div>
                         <div className="ml-3 flex flex-col w-full">
-                            <textarea placeholder="What's happening?" className="w-full  resize-none outline-none h-22 bg-black"></textarea>
+                            <textarea placeholder="What's happening?" className="w-full  resize-none outline-none h-40 bg-black"></textarea>
                             <div className="cursor-pointer text-blue-500 -ml-4 border-b-2 border-gray-300 pb-4">
                                 <p className="inline px-4 py-3 rounded-full hover:border-blue-500"><i className="fas fa-globe"></i> Everyone can reply</p>
                             </div>

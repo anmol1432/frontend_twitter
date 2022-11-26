@@ -26,7 +26,7 @@ const axiosInst = axios.create({
     }],
     transformRequest: [function (data, headers) {
         // Do whatever you want to transform the data
-        return JSON.stringify( { data });
+        return JSON.stringify({ data });
     }],
 });
 
