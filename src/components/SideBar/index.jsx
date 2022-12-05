@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     HomeOutlined, BorderlessTableOutlined, BellOutlined,
     MessageOutlined, BookOutlined, UnorderedListOutlined,
@@ -6,14 +6,14 @@ import {
 } from '@ant-design/icons';
 import { useHistory, NavLink } from "react-router-dom"
 import storageKeys from '../../services/localStorageKeys';
-import { Button,Popover } from 'antd';
+import { Button, Popover } from 'antd';
 import './index.css'
 
 
 const SingleLink = ({ linkText, icon, adress }) => {
     return (
         <>
-            <NavLink to={String(adress)}>
+            <NavLink to={adress}>
                 <div className="flex items-center p-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300" >
                     <div className="icons lg:w-3/12 w-full text-center rounded-full border-gray-100" style={{
                         height: "35px",
@@ -36,6 +36,32 @@ const SingleLink = ({ linkText, icon, adress }) => {
 const SideBar = () => {
     let history = useHistory();
 
+    let [open, setOpen] = useState(false);
+
+    let hide = (e) => {
+        setOpen(false);
+        e.stopPropagation()
+    };
+
+    let handleOpenChange = (newOpen) => {
+        setOpen(newOpen);
+    };
+
+    let BtnGroup = () => {
+        return (<>
+            <button type="primary" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white  w-full py-3 mt-2 items-end ">
+                Twee
+            </button>
+            {
+                localStorage.getItem(storageKeys.token) ? < button onClick={() => {
+                    localStorage.removeItem(storageKeys.token)
+                    history.push("/login")
+                }} type="primary" shape="round" size="large" className="button bg-gray-900  border-2  rounded-full font-medium text-white w-full py-3 mt-2 items-end">
+                    logout
+                </button> : <></>
+            }
+        </>)
+    }
     const navTabs = [
         {
             linkText: 'Home',
@@ -72,11 +98,11 @@ const SideBar = () => {
             icon: <UserOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
             adress: `/profile/123`
         },
-        {
-            linkText: 'More',
-            icon: <EllipsisOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
-            adress: `/more`
-        }
+        // {
+        //     linkText: 'More',
+        //     icon: <EllipsisOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />,
+        //     adress: `/more`
+        // }
     ]
     return (
         <div>
@@ -103,6 +129,7 @@ const SideBar = () => {
                                 <SingleLink linkText={item.linkText} icon={item.icon} adress={item.icon} key={item.linkText} />
                             </>)
                         })}
+
                         <button type="primary" shape="round" size="large" className="button bg-blue-500 rounded-full font-medium text-white  w-full py-3 mt-2 items-end lg:visible md:invisible invisible" id="icons-hide">
                             Tweet
                         </button>
@@ -114,6 +141,30 @@ const SideBar = () => {
                                 logout
                             </button> : <></>
                         }
+                        <div className='lg:invisible md:invisible visible'>
+                            <Popover
+                                content={<BtnGroup />}
+                                title="More"
+                                trigger="click"
+                                open={open}
+                                onOpenChange={handleOpenChange}>
+                                <div className="flex items-center p-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300" >
+                                    <div className="icons lg:w-3/12 w-full text-center rounded-full border-gray-100" style={{
+                                        height: "35px",
+                                        padding: "2px",
+                                        border: '3px',
+                                        width: "35px"
+                                    }}>
+
+                                        <EllipsisOutlined className="fa fa-home stroke-current text-gray-100  text-2xl " />
+                                    </div>
+                                    {/* <span className="lg:w-9/12 lg:visible  invisible w-0">
+                                        <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">More</h1>
+                                    </span> */}
+                                </div>
+                            </Popover>
+                        </div>
+
                     </div>
                 </div>
                 {/*  */}

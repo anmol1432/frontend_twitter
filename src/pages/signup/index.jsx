@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import Input from "../../components/Input/index";
 import axiosInst from "../../services/api.config";
+import { signUp } from "../../services/endpoints/authentication";
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import "./index.css"
 
 
@@ -13,19 +16,35 @@ const Signup = ({ dispatch }) => {
         password: '',
         confirmPassword: ''
     })
-    // useEffect(() => {
-    //     console.log(fromValue);
-    // }, [fromValue])
+    const [loading, setloading] = useState(false)
+    const history = useHistory()
+    const loadingIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+    
 
     const handleSubmit = (e) => {
+        console.log("hello")
         e.preventDefault();
-        axiosInst.post("signup", {
+        setloading(true)
+        axiosInst.post(signUp(), {
             name: fromValue.name,
             email: fromValue.email,
             password: fromValue.password,
             confirmPassword: fromValue.confirmPassword,
             phone: fromValue.phone
-        });
+        }).then((res) => {
+            if (res.data) {
+                history.push("/user");
+            }
+            else {
+                setloading(false)
+                history.push('/login')
+            }
+        }).catch((err) => {
+            if (err) {
+                setloading(false)
+            }
+        })
+        console.log("bye")
     }
     const handleInput = (e) => {
         let eventValue = e.target.value
@@ -65,8 +84,9 @@ const Signup = ({ dispatch }) => {
                             <button type="submit"
                                 onClick={handleSubmit}
                                 shape="round" size="large"
-                                className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
-                                Sign up
+                                className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3"
+                                disabled={loading}>
+                               {loading ? < Spin indicator={loadingIcon} /> : 'Sign up'}
                             </button>
                         </form>
                     </div>
