@@ -11,6 +11,7 @@ import Home from "./pages/Home/index";
 import Profile from "./pages/Profile/index";
 import UserPage from "./pages/UserPage/index";
 import PrivateRoute from "./components/PrivateRoute/index";
+import Blank from "./pages/Blank";
 import Error from "./pages/404/index";
 
 
@@ -20,6 +21,7 @@ export const App = () => {
             <>
                 <Switch>
                     <Route exact path={"/"} render={() => localStorage.getItem('token') ? <Redirect to="/home" /> : <Home />} />
+                    <Route exact path={"/blank"} render={<Blank />} />
                     {/* <Route exact path={"/home"} render={() => <UserPage />} /> */}
                     <PrivateRoute exact path={"/home"} component={UserPage} />
                     <PrivateRoute exact path={"/profile/:id"} component={Profile} />

@@ -1,25 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
+import { atom, useAtom } from "jotai";
 import Input from "../../components/Input/index";
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import "./index.css"
 
+const countAtom = atom(0);
+const dotsAtom = atom([2, 3]);
 
-const Signup = () => {
+const Svgdots = () => {
+    const [dots, Setdots] = useAtom(dotsAtom);
+    return (< svg width="800" height="700" style={{ background: 'gray' }} draggable="true"
+        onMouseMove={(e) => {
+            const p = [e.clientX / 1.8, e.clientY / 1.8];
+            Setdots(p);
+        }}>
+        <circle cx={dots[0]} cy={dots[1]} r="40" stroke="green" stroke-width="4" fill="yellow" />
+    </svg>)
+}
+
+const Login = () => {
     const [fromValue, setfromValue] = useState({
-        name: '',
         email: '',
-        phone: '',
         password: '',
-        confirmPassword: ''
     })
-    
 
-    const handleSubmit = () => {
+    const [count, setCount] = useAtom(countAtom);
+   
+    // const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+    // useEffect(() => {
+    //     console.log("sign_in in login ueffect")
+    // }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setCount(count + 1);
+        console.log("count ===> ", count)
     };
 
     const handleInput = (e) => {
         let eventValue = e.target.value
         let eventName = e.target.name
+        setCount(count + 1);
+        console.log("count ===> ", count)
         setfromValue({ ...fromValue, [eventName]: eventValue })
     };
 
@@ -42,30 +68,45 @@ const Signup = () => {
                             </svg>
                         </NavLink>
                         <h1 className="text-white font-extrabold my-2 tracking-wide text-2xl">
-                            Sign In to twitter
+                            Log in to twitter
                         </h1>
                     </div>
                     <div className="w-10/12 mx-auto">
-                        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col" >
-                            <Input name={"name"} type={"text"} className="mb-2" children={"User Name"} handleInput={handleInput} />
-                            <Input name={"email"} type={"email"} className="mb-2" children={"Email"} handleInput={handleInput} />
-                            <Input name={"phone"} type={"tel"} className="mb-2" children={"Phone number"} handleInput={handleInput} />
+                        <form onSubmit={handleSubmit} className="flex flex-col" >
+                            <Input name={"email"} type={"text"} className="mb-2" children={"Email , userName"} handleInput={handleInput} />
                             <Input name={"password"} type={"password"} className="mb-2" children={"Password"} handleInput={handleInput} />
-                            <Input name={"confirmPassword"} type={"password"} className="mb-2" children={"Confirm Password"} handleInput={handleInput} />
                             <button type="submit"
                                 onClick={handleSubmit}
                                 shape="round" size="large"
+                                id="loginBtn"
                                 className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
-                                Sign up
+                                Submit
                             </button>
+
                         </form>
+                        <div className="text-center">
+                            <NavLink
+                                to="/"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "white"
+                                }}
+                                className="text-blue-500"
+                            >
+                                Forget passowrd ?
+                            </NavLink>
+                            <NavLink
+                                to="/"
+                                className="text-blue-500 ml-4 font-extrabold border-b-2 hover:border-blue-500"
+                            >
+                                or register now
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
             </div>
         </>
     )
-}
+};
 
-
-export default  Signup;
-
+export default Login;
