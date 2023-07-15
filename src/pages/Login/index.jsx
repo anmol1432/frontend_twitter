@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/index";
 import axiosInst from "../../services/api.config";
 import { signIn } from "../../services/endpoints/authentication";
@@ -14,7 +14,7 @@ const Login = () => {
         password: '',
     })
     const [loading, setloading] = useState(false)
-    const history = useHistory()
+    const navigate = useNavigate()
     const loadingIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,11 +24,11 @@ const Login = () => {
             password: fromValue.password
         }).then((res) => {
             if (res.data) {
-                history.push("/user");
+                navigate("/user");
             }
             else {
                 setloading(false)
-                history.push('/login')
+                navigate('/login')
             }
         }).catch((err) => {
             if (err) {
@@ -48,7 +48,7 @@ const Login = () => {
             <div className="block mx-auto " id="login">
                 <div className="flex flex-col justify-center item-center pt-6 lg:w-4/12 lg:mx-auto md:w-6/12  md:mx-auto ">
                     <div className="mx-7">
-                        <NavLink to="/">
+                        {/* <NavLink to="/"> */}
                             <svg viewBox="0 0 24 24" className="w-auto my-2  lg:h-16 h-12  " fill="currentColor">
                                 <path className="text-white" d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49
                         2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658
@@ -60,7 +60,7 @@ const Login = () => {
                         13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z">
                                 </path>
                             </svg>
-                        </NavLink>
+                        {/* </NavLink> */}
                         <h1 className="text-white font-extrabold my-2 tracking-wide text-2xl">
                             Log in to twitter
                         </h1>
@@ -80,7 +80,7 @@ const Login = () => {
 
                         </form>
                         <div className="text-center">
-                            <NavLink
+                            {/* <NavLink
                                 to="/"
                                 activeStyle={{
                                     fontWeight: "bold",
@@ -95,7 +95,7 @@ const Login = () => {
                                 className="text-blue-500 ml-4 font-extrabold border-b-2 hover:border-blue-500"
                             >
                                 or register now
-                            </NavLink>
+                            </NavLink> */}
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ import {
     MessageOutlined, BookOutlined, UnorderedListOutlined,
     UserOutlined, EllipsisOutlined
 } from '@ant-design/icons';
-import { useHistory, NavLink } from "react-router-dom"
+import { useNavigate, NavLink } from "react-router-dom"
 import storageKeys from '../../services/localStorageKeys';
 import { Button, Popover } from 'antd';
 import './index.css'
@@ -13,7 +13,7 @@ import './index.css'
 const SingleLink = ({ linkText, icon, adress }) => {
     return (
         <>
-            <NavLink to={adress}>
+            {/* <NavLink to={adress}> */}
                 <div className="flex items-center p-2  rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-800 shadow-lg cursor-pointer transition ease-in duration-300" >
                     <div className="icons lg:w-3/12 w-full text-center rounded-full border-gray-100" style={{
                         height: "35px",
@@ -28,13 +28,13 @@ const SingleLink = ({ linkText, icon, adress }) => {
                         <h1 className="text-gray-100 font-medium text-left text-xl ml-4" id="list-text">{linkText}</h1>
                     </span>
                 </div>
-            </NavLink>
+            {/* </NavLink> */}
         </>
     )
 }
 
 const SideBar = () => {
-    let history = useHistory();
+    let navigate = useNavigate();
 
     let [open, setOpen] = useState(false);
 
@@ -55,7 +55,7 @@ const SideBar = () => {
             {
                 localStorage.getItem(storageKeys.token) ? < button onClick={() => {
                     localStorage.removeItem(storageKeys.token)
-                    history.push("/login")
+                    navigate("/login")
                 }} type="primary" shape="round" size="large" className="button bg-gray-900  border-2  rounded-full font-medium text-white w-full py-3 mt-2 items-end">
                     logout
                 </button> : <></>
@@ -136,7 +136,7 @@ const SideBar = () => {
                         {
                             localStorage.getItem(storageKeys.token) ? < button onClick={() => {
                                 localStorage.removeItem(storageKeys.token)
-                                history.push("/login")
+                                navigate("/login")
                             }} type="primary" shape="round" size="large" className="button bg-transparent border-2  rounded-full font-medium text-white w-full py-3 mt-2 items-end lg:visible md:invisible invisible" id="icons-hide">
                                 logout
                             </button> : <></>

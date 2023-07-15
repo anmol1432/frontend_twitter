@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/index";
 import axiosInst from "../../services/api.config";
 import { signUp } from "../../services/endpoints/authentication";
@@ -17,9 +17,9 @@ const Signup = ({ dispatch }) => {
         confirmPassword: ''
     })
     const [loading, setloading] = useState(false)
-    const history = useHistory()
+    const navigate = useNavigate()
     const loadingIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-    
+
 
     const handleSubmit = (e) => {
         console.log("hello")
@@ -33,11 +33,11 @@ const Signup = ({ dispatch }) => {
             phone: fromValue.phone
         }).then((res) => {
             if (res.data) {
-                history.push("/user");
+                navigate("/user");
             }
             else {
                 setloading(false)
-                history.push('/login')
+                navigate('/login')
             }
         }).catch((err) => {
             if (err) {
@@ -57,7 +57,7 @@ const Signup = ({ dispatch }) => {
             <div className="block mx-auto " id="login">
                 <div className="flex flex-col justify-center item-center pt-6 lg:w-4/12 lg:mx-auto md:w-6/12  md:mx-auto ">
                     <div className="mx-7">
-                        <NavLink to="/">
+                        {/* <NavLink to="/"> */}
                             <svg viewBox="0 0 24 24" className="w-auto my-2  lg:h-16 h-12  " fill="currentColor">
                                 <path className="text-white" d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49
                         2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658
@@ -69,7 +69,7 @@ const Signup = ({ dispatch }) => {
                         13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z">
                                 </path>
                             </svg>
-                        </NavLink>
+                        {/* </NavLink> */}
                         <h1 className="text-white font-extrabold my-2 tracking-wide text-2xl">
                             Sign In to twitter
                         </h1>
@@ -86,7 +86,7 @@ const Signup = ({ dispatch }) => {
                                 shape="round" size="large"
                                 className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3"
                                 disabled={loading}>
-                               {loading ? < Spin indicator={loadingIcon} /> : 'Sign up'}
+                                {loading ? < Spin indicator={loadingIcon} /> : 'Sign up'}
                             </button>
                         </form>
                     </div>

@@ -7,9 +7,9 @@ const Error = () => {
         <p className="font-sans text-white error-text text-4xl">Page not found 🛑</p>
       </div>
       <div className="absolute w-screen bottom-0 mb-6 text-white text-center font-sans text-xl">
-        <NavLink to="/">
+        {/* <NavLink to="/"> */}
           <span className="">Take me back to Home</span>
-        </NavLink>
+        {/* </NavLink> */}
       </div>
     </>
   )

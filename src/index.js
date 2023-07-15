@@ -5,16 +5,16 @@ import { ConfigProvider } from 'antd';
 import "./index.css";
 
 ReactDOM.render(
-    <>
+  <>
     <ConfigProvider
-    theme={{
-      token: {
-        colorPrimary: '#ffff',
-      },
-    }}
-  >
-        <App />
-  </ConfigProvider>
-    </>,
-    document.getElementById("root")
+      theme={{
+        token: {
+          colorPrimary: '#ffff',
+        },
+      }}
+    >
+      <App />
+    </ConfigProvider>
+  </>,
+  document.getElementById("root")
 );
