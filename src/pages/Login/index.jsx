@@ -1,51 +1,45 @@
-import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom';
-import { NavLink } from "react-router-dom";
-import { atom, useAtom } from "jotai";
+import React, { useState } from 'react'
+import { NavLink, useHistory } from "react-router-dom";
 import Input from "../../components/Input/index";
-import { Spin } from 'antd';
+import axiosInst from "../../services/api.config";
+import { signIn } from "../../services/endpoints/authentication";
 import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 import "./index.css"
 
-const countAtom = atom(0);
-const dotsAtom = atom([2, 3]);
-
-const Svgdots = () => {
-    const [dots, Setdots] = useAtom(dotsAtom);
-    return (< svg width="800" height="700" style={{ background: 'gray' }} draggable="true"
-        onMouseMove={(e) => {
-            const p = [e.clientX / 1.8, e.clientY / 1.8];
-            Setdots(p);
-        }}>
-        <circle cx={dots[0]} cy={dots[1]} r="40" stroke="green" stroke-width="4" fill="yellow" />
-    </svg>)
-}
 
 const Login = () => {
     const [fromValue, setfromValue] = useState({
         email: '',
         password: '',
     })
-
-    const [count, setCount] = useAtom(countAtom);
-   
-    // const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-
-    // useEffect(() => {
-    //     console.log("sign_in in login ueffect")
-    // }, []);
-
+    const [loading, setloading] = useState(false)
+    const history = useHistory()
+    const loadingIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
     const handleSubmit = (e) => {
-        e.preventDefault()
-        setCount(count + 1);
-        console.log("count ===> ", count)
+        e.preventDefault();
+        setloading(true)
+        axiosInst.post(signIn(), {
+            email: fromValue.email,
+            password: fromValue.password
+        }).then((res) => {
+            if (res.data) {
+                history.push("/user");
+            }
+            else {
+                setloading(false)
+                history.push('/login')
+            }
+        }).catch((err) => {
+            if (err) {
+                setloading(false)
+            }
+        })
     };
 
     const handleInput = (e) => {
         let eventValue = e.target.value
         let eventName = e.target.name
-        setCount(count + 1);
-        console.log("count ===> ", count)
         setfromValue({ ...fromValue, [eventName]: eventValue })
     };
 
@@ -79,8 +73,9 @@ const Login = () => {
                                 onClick={handleSubmit}
                                 shape="round" size="large"
                                 id="loginBtn"
+                                disabled={loading}
                                 className="button bg-blue-500 rounded-full font-medium text-white py-3 my-3">
-                                Submit
+                                {loading ? < Spin indicator={loadingIcon} /> : 'Submit'}
                             </button>
 
                         </form>
@@ -107,6 +102,6 @@ const Login = () => {
             </div>
         </>
     )
-};
+}
 
 export default Login;
